@@ -89,4 +89,4 @@ ENV/
 .ropeproject
 
 # doc
-~$*.docx
+~$*.doc*
