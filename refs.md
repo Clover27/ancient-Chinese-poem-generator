@@ -10,10 +10,12 @@
 - [LSTM](https://github.com/ChaosPKU/Poetry)
 
 ##Papers and blogs:
-- [paper poem generate with RNN](http://aclweb.org/anthology/D/D14/D14-1074.pdf)
-- [understand LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-- [RNN with LSTM](http://deeplearning.net/tutorial/lstm.html)
-- [RNN](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+- [[paper]Poem Generation with RNN (evaluation)](http://aclweb.org/anthology/D/D14/D14-1074.pdf)
+- [[paper]Chinese Poetry Generation with Planning based Neural Network](https://arxiv.org/pdf/1610.09889.pdf)
+- [[paper]Generating Topical Poetry](https://www.aclweb.org/anthology/D/D16/D16-1126.pdf)
+- [[blog]understand LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+- [[blog]RNN with LSTM](http://deeplearning.net/tutorial/lstm.html)
+- [[blog]RNN](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
 ##Tutorials:
 - [Tensorflow seq2seq](https://www.tensorflow.org/tutorials/seq2seq)
