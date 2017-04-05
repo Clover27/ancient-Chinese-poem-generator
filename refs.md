@@ -16,6 +16,7 @@
 - [[blog]understand LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 - [[blog]RNN with LSTM](http://deeplearning.net/tutorial/lstm.html)
 - [[blog]RNN](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+- [**[blog]Text Generation With LSTM Recurrent Neural Networks in Python with Keras**](http://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/)
 
 ##Tutorials:
 - [Tensorflow seq2seq](https://www.tensorflow.org/tutorials/seq2seq)
