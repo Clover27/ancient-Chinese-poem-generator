@@ -90,7 +90,7 @@ def train(X,Y,file):
 	model.add(Dense(Y.shape[1], activation='softmax'))
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-	model.save(file + "/model-{}-{}.h5".format(n_mmu,dropout))
+	model.save(file + "/model-{}-{}.h5py".format(n_mmu,dropout))
 	# define the checkpoint
 	filepath=file + "/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
