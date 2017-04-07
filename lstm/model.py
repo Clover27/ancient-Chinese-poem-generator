@@ -90,7 +90,7 @@ def train(X,Y,file):
 	model.add(Dense(Y.shape[1], activation='softmax'))
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-	model.save(file + "/model-{}-{}.h5py".format(n_mmu,dropout))
+	model.save(file + "/model-{}-{}.h5".format(n_mmu,dropout))
 	# define the checkpoint
 	filepath=file + "/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
@@ -120,7 +120,7 @@ def predict(prediction):
 def generate(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
-	model = load_model("../model/weights/model.h5py")
+	model = load_model("../model/weights/model.h5")
 
 	# model.add(LSTM(n_mmu, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
 	# model.add(Dropout(dropout))
@@ -172,6 +172,7 @@ def generate(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
 def generate2(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
+	model = load_model("../model/weights/model.h5")
 	model.load_weights(filename)
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 	# get first sentence
