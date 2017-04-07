@@ -46,8 +46,7 @@ def main():
 	# getting training data
 	print("Getting training data...")
 	data_x , data_y = get_training_data(raw_dict,char_to_int)
-	print(data_x[:6])
-	print(data_y[:6])
+
 	# one-hot encoding
 	print("Encoding training data...")
 	X,Y = one_hot_encode(data_x,data_y,n_voc)

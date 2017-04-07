@@ -11,10 +11,10 @@ from keras.utils import np_utils
 from keras.models import load_model
 
 seq_len = 6 #sequence length
-n_mmu = 256 # number of memory units
+n_mmu = 512 # number of memory units （256 or 512）
 dropout = 0.2 # dropout rate
-epoch = 30 # number of training epoch
-batch = 128 # batch size
+epoch = 100 # number of training epoch
+batch = 64 # batch size
 n_len = 4 # default poem length
 
 def get_training_data(raw_dict, char_to_index):
@@ -90,12 +90,13 @@ def train(X,Y,file):
 	model.add(Dense(Y.shape[1], activation='softmax'))
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-	model.save(file + "/model.h5")
+	model.save(file + "/model-{}-{}.h5".format(n_mmu,dropout))
 	# define the checkpoint
-	filepath=file + "/weights-improvement-{epoch:02d}-{loss:.4f}-1.hdf5"
+	filepath=file + "/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 	callbacks_list = [checkpoint]
 	# training
+	# model.load_weights("../model/weights/weights-improvement-29-5.1411-1.hdf5")
 	model.fit(X, Y, epochs=epoch, batch_size=batch, callbacks=callbacks_list)
 
 def first_sentence(first = ""):
