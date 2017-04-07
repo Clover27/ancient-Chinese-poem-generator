@@ -3,8 +3,6 @@ import json
 import math
 import codecs
 import glob
-from langconv import * 
-
 def main():
 	path = '/ShuaiZhou/USC/CSCI544/Project/DataSet/*.json'   
 	files = glob.glob(path)
@@ -16,9 +14,10 @@ def main():
 		data_file = open(name, encoding='utf-8')
 		data = json.loads(data_file.read())
 		washing(preprocessed, data, preprocessed_mixed, vocabulary)
-	processedData = open("data_five_character_quatrains.txt", 'w', encoding='utf-8')
-	processedData_mix = open("data_mixed.txt", 'w', encoding='utf-8')
-	vocabulary_f = open("vocabulary_frequence.txt", 'w', encoding='utf-8')
+	processedData = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_five_character_quatrains繁体.txt", 'w', encoding='utf-8')
+	processedData_mix = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_mixed繁体.txt", 'w', encoding='utf-8')
+	vocabulary_f = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/vocabulary_frequency繁体.txt", 'w', encoding='utf-8')
+	
 	json.dump(vocabulary, vocabulary_f,  ensure_ascii=False)
 	json.dump(preprocessed, processedData,  ensure_ascii=False)
 	json.dump(preprocessed_mixed, processedData_mix,  ensure_ascii=False)
@@ -27,12 +26,12 @@ def main():
 	data_file.close()
 	print(len(preprocessed))
 	print(len(preprocessed_mixed))
-	print(len(vocabulary))
+	print(len(vocabulary ))
 		
 	# s = ["明月出天山，蒼茫雲海間○。", "明月出天山，蒼茫雲海間。"]
 	# print("○" in s[0])
 def washing(preprocessed, data, preprocessed_mixed, vocabulary):
-	symbol = "·！（）[]「」{}《》？-1234567890=+|/。"
+	symbol = "·！（）[]「」{}《》？-1234567890=+|/。●〖〗"
 	for shi in data:
 		if "○" in (shi["title"] or shi["author"]):
 			continue
@@ -51,7 +50,7 @@ def washing(preprocessed, data, preprocessed_mixed, vocabulary):
 		dic["title"] = ""
 		for char in shi["title"]:
 			if char not in symbol:
-				# char = Converter('zh-hant').convert(char) 
+				# char = HanziConv.toSimplified(char)
 				dic["title"] += char
 		dic["strains"] = ""
 		dic["paragraphs"] = ""
@@ -74,7 +73,7 @@ def washing(preprocessed, data, preprocessed_mixed, vocabulary):
 				temp = ""
 				for i, x in enumerate(jjuzi):
 					if x not in symbol:
-						# x = Converter('zh-hant').convert(x) 
+						# char = HanziConv.toSimplified(char)
 						dic["paragraphs"] += x
 						temp += x
 						if x not in vocabulary:
