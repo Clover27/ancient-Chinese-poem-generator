@@ -13,7 +13,7 @@ def main():
 	# parser.add_argument('-p','--prime',type = str,help = "Initial Chinese characters for each sentence.",default = "")
 	# parser.add_argument('-s','--sentence',type = str,help = "First sentence for the poem.",default = "")
 	parser.add_argument('-d','--data',type = str,help = "Training data.",default = "../datasets/data_sample.txt")
-	# parser.add_argument('-t','--train',nargs = 0,help = "If -t is set, model will be trained and not generating poems")
+	parser.add_argument('-l','--load',type = str,help = "Weights to load into model.",default = "")
 
 
 	args = parser.parse_args()
@@ -53,7 +53,7 @@ def main():
 
 	# build and train
 	print("Training...")
-	train(X,Y,args.model)
+	train(X,Y,args.model,args.load)
 	print("Training stop.")
 
 

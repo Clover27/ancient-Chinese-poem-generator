@@ -11,10 +11,10 @@ from keras.utils import np_utils
 from keras.models import load_model
 
 seq_len = 6 #sequence length
-n_mmu = 512 # number of memory units （256 or 512）
+n_mmu = 256 # number of memory units （256 or 512）
 dropout = 0.2 # dropout rate
 epoch = 100 # number of training epoch
-batch = 64 # batch size
+batch = 128 # batch size
 n_len = 4 # default poem length
 
 def get_training_data(raw_dict, char_to_index):
@@ -80,7 +80,7 @@ def one_hot_encode(data_X,data_Y,n_vocab):
 	Y = np_utils.to_categorical(data_Y)
 	return X,Y
 
-def train(X,Y,file):
+def train(X,Y,file,load_path):
 	# define model
 	model = Sequential()
 	model.add(LSTM(n_mmu, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
@@ -95,8 +95,10 @@ def train(X,Y,file):
 	filepath=file + "/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 	callbacks_list = [checkpoint]
+	# loading
+	if load_path != "":
+		model.load_weights(load_path)
 	# training
-	# model.load_weights("../model/weights/weights-improvement-29-5.1411-1.hdf5")
 	model.fit(X, Y, epochs=epoch, batch_size=batch, callbacks=callbacks_list)
 
 def first_sentence(first = ""):
