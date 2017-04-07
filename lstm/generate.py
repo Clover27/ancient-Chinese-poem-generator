@@ -11,7 +11,8 @@ def main():
 	parser.add_argument('-p','--prime',type = str,help = "Initial Chinese characters for each sentence.",default = "")
 	parser.add_argument('-s','--sentence',type = str,help = "First sentence for the poem.",default = "")
 	parser.add_argument('-v','--voc',type = str,help = "Vocabulary file path.",default = "../model/weights/vocabulary.json")
-	parser.add_argument('-m','--model',type = str,help = "Model weights to be loaded.",default = "../model/weights/weights-improvement-29-5.1411-1.hdf5")
+	parser.add_argument('-w','--weights',type = str,help = "Model weights to be loaded.",default = "../model/weights/weights-improvement-29-5.1411-1.hdf5")
+	parser.add_argument('-m','--model',type = str,help = "LSTM Model to be loaded.",default = "../model/weights/model.h5")
 
 	args = parser.parse_args()
 
@@ -33,7 +34,7 @@ def main():
 	else:
 		fs = args.sentence
 
-	p = generate(args.model,char_to_int,int_to_char,args.prime,args.sentence)
+	p = generate(args.weights,args.model,char_to_int,int_to_char,args.prime,args.sentence)
 
 	for s in p:
 		print(s)

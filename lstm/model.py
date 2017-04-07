@@ -117,10 +117,10 @@ def predict(prediction):
 	'''
 	return numpy.argmax(prediction)
 
-def generate(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
+def generate(filename, model_path,char_to_index,index_to_char,model,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
-	model = load_model("../model/weights/model.h5")
+	model = load_model(model_path)
 
 	# model.add(LSTM(n_mmu, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
 	# model.add(Dropout(dropout))
@@ -169,10 +169,10 @@ def generate(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
 		pattern = pattern[1:len(pattern)]
 	return poem
 
-def generate2(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
+def generate2(filename,model_path, char_to_index,index_to_char,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
-	model = load_model("../model/weights/model.h5")
+	model = load_model(model_path)
 	model.load_weights(filename)
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 	# get first sentence
