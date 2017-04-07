@@ -8299,9 +8299,9 @@ def main():
 		data_file = open(name, encoding='utf-8')
 		data = json.loads(data_file.read())
 		washing(preprocessed, data, preprocessed_mixed, vocabulary, zh2Hans, zh2Hant)
-	processedData = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_five_character_quatrains繁体.txt", 'w', encoding='utf-8')
-	processedData_mix = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_mixed繁体.txt", 'w', encoding='utf-8')
-	vocabulary_f = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/vocabulary_frequency繁体.txt", 'w', encoding='utf-8')
+	processedData = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_five_character_quatrains简体.txt", 'w', encoding='utf-8')
+	processedData_mix = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/data_mixed简体.txt", 'w', encoding='utf-8')
+	vocabulary_f = open("/ShuaiZhou/USC/CSCI544/Project/ancient-Chinese-poetry-generator/datasets/vocabulary_frequency简体.txt", 'w', encoding='utf-8')
 	
 	json.dump(vocabulary, vocabulary_f,  ensure_ascii=False)
 	json.dump(preprocessed, processedData,  ensure_ascii=False)
