@@ -90,3 +90,7 @@ ENV/
 
 # doc
 ~$*.doc*
+
+# models
+*.hdf5
+*.h5
