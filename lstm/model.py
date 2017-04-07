@@ -117,7 +117,7 @@ def predict(prediction):
 	'''
 	return numpy.argmax(prediction)
 
-def generate(filename, model_path,char_to_index,index_to_char,model,prime = "" ,sentence = ""):
+def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
 	model = load_model(model_path)
@@ -152,7 +152,7 @@ def generate(filename, model_path,char_to_index,index_to_char,model,prime = "" ,
 	for i in range(0,n_s,1):
 		s = ""
 		if prime != "":
-			s = "" + prime[1 + i]
+			s = s + prime[1 + i]
 			pattern.append(char_to_index[s[0]])
 			pattern = pattern[1:len(pattern)]
 		for j in range(len(s),seq_len -1,1):
