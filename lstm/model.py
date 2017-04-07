@@ -120,7 +120,7 @@ def predict(prediction):
 def generate(filename, char_to_index,index_to_char,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
-	model = load_model("../model/weights/model.h5")
+	model = load_model("../model/weights/model.h5py")
 
 	# model.add(LSTM(n_mmu, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
 	# model.add(Dropout(dropout))
