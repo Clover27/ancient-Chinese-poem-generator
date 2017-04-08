@@ -11,10 +11,10 @@ from keras.utils import np_utils
 from keras.models import load_model
 
 seq_len = 6 #sequence length
-n_mmu = 512 # number of memory units （256 or 512）
+n_mmu = 256 # number of memory units （256 or 512）
 dropout = 0.2 # dropout rate
 epoch = 100 # number of training epoch
-batch = 64 # batch size
+batch = 128 # batch size
 n_len = 4 # default poem length
 
 def get_training_data(raw_dict, char_to_index):
@@ -99,7 +99,7 @@ def train(X,Y,file,load_path):
 	if load_path != "":
 		model.load_weights(load_path)
 	# training
-	model.fit(X, Y, epochs=epoch, batch_size=batch, callbacks=callbacks_list)
+	model.fit(X, Y, epochs=epoch, batch_size=batch, callbacks=callbacks_list,validation_split = 0.1)
 
 def first_sentence(first = ""):
 	'''
