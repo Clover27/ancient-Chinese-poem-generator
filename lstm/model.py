@@ -151,6 +151,10 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 	# pattern = [char_to_index[c] for c in fs]
 	# generate characters
 	
+	sen_len = len(pattern)
+
+	pattern = pattern[len(pattern) - seq_len:]
+
 	if prime == "":
 		n_s = n_len - 1
 	else:
@@ -162,7 +166,7 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 			s = s + prime[1 + i]
 			pattern.append(char_to_index[s[0]])
 			pattern = pattern[1:len(pattern)]
-		for j in range(len(s),seq_len -1,1):
+		for j in range(len(s),sen_len -1,1):
 			x = numpy.reshape(pattern, (1, len(pattern), 1))
 			x = x / float(n_vocab)
 			prediction = model.predict(x, verbose=0)
