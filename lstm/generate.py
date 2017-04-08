@@ -1,11 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import sys
+sys.stderr = open('/dev/null', 'w')
+
+import os 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 from config import *
 from model import *
 import os
 import argparse
 import json
+
 
 def main():
 	parser = argparse.ArgumentParser(description='Ancient Chinese poetry generator.')
@@ -44,7 +50,7 @@ def main():
 	p = generate(args.weights,args.model,char_to_int,int_to_char,args.prime,args.sentence)
 
 	for s in p:
-		print(s)
+		print("\t" + s)
 
 
 if __name__ == "__main__":
