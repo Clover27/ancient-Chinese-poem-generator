@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from config import *
 from model import *
 import os
 import argparse
@@ -18,8 +19,14 @@ def main():
 
 	# check
 	if args.prime != '' and args.sentence != '' and args.sentence[0] != args.prime[0]:
-		print("First character should be same!")
+		print("ERROR: First character should be same!")
 		return
+	if len(args.sentence) != seq_len - 1:
+		print("ERROR: Sentence length should be {}".format(seq_len - 1))
+		return
+	# global seq_len
+	# if len(args.sentence) != seq_len - 1:
+	# 	seq_len = len(args.sentence) + 1
 
 	voc_t = open(args.voc,'r',encoding = 'utf-8')
 	[voc,voc_count] = json.loads(voc_t.read())

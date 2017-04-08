@@ -9,13 +9,9 @@ from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
 from keras.models import load_model
+import random
+from config import *
 
-seq_len = 6 #sequence length
-n_mmu = 256 # number of memory units （256 or 512）
-dropout = 0.2 # dropout rate
-epoch = 100 # number of training epoch
-batch = 128 # batch size
-n_len = 4 # default poem length
 
 def get_training_data(raw_dict, char_to_index):
 	'''
@@ -143,9 +139,18 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 			fs = first_sentence(prime[0])
 	poem = [fs]
 	fs = fs + '$'
-	pattern = [char_to_index[c] for c in fs]
-	# generate characters
+
 	n_vocab = len(char_to_index)
+	random.seed()
+	pattern = []
+	for c in fs:
+		if c in char_to_index:
+			pattern.append(char_to_index[c])
+		else:
+			pattern.append(random.randint(0,n_vocab-1))
+	# pattern = [char_to_index[c] for c in fs]
+	# generate characters
+	
 	if prime == "":
 		n_s = n_len - 1
 	else:
