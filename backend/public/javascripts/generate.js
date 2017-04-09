@@ -29,13 +29,13 @@ var app = new Vue({
       }
     },
     doit: function () {
-      let a = this.checkPrime()
+      // let a = this.checkPrime()
       let b = this.checkSentence()
       let me = this
-      if (a && b) {
+      if (b) {
         $('#root .pg-output li').remove()
         me.show = true
-        let url = '/generate/sentence/' + this.sentence.trim() + '/prime/' + this.prime.trim()
+        let url = '/generate?sentence=' + this.sentence.trim() + '&prime=' + this.prime.trim()
         $.getJSON(url, function (data) {
           me.show = false
           for (let i = 0; i < data.result.length; i++) {
