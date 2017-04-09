@@ -5,12 +5,17 @@
   height: auto;
   min-height: 100%;
   text-align: center;
-  padding-bottom: 5em;
+  /*padding-bottom: 5em;*/
 }
 
 #root .pg-header {
   color: #fff;
-  padding: 3em 0;
+  padding: 3em 0 2em 0;
+  margin: 0;
+}
+
+#root .ui.input {
+  margin-top: 1em;
 }
 
 #root .pg-input {
@@ -48,11 +53,22 @@
   padding: 5em 0;
   background-color: RGBA(57, 104, 171, 0.50);
   width: 100%;
+  min-height: 400px;
 }
 
 #root .pg-output li {
   font-size: 2em;
   line-height: 2.5em;
   list-style: none;
-  letter-spacing: 3px;
+  letter-spacing: 1em;
+}
+
+#root .pg-button {
+  margin-top: 3em;
+}
+
+#root .pg-button .button {
+  min-width: 290px;
+  width: 20%;
+  font-size: 1.1em;
 }

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <title>Ancient Chinese Poem Generator</title>
   </head>
@@ -14,17 +16,35 @@
           <i class="write square icon"></i>
           Ancient Chinese Poem Generator
         </h2>
-        <div class="ui icon input">
-          <input class="pg-input" placeholder="type a keyword"/>
-          <i class="send outline link icon"></i>
+        <div class="ui input">
+          <input id="prime" class="pg-input" placeholder="type the prime words" v-model="prime" data-inverted=""/>
+          <!--<i class="send outline link icon"></i>-->
+        </div>
+        <div class="ui input">
+          <input id="sentence" class="pg-input" placeholder="type the first sentence" v-model="sentence" data-inverted=""/>
+          <!--<i class="send outline link icon"></i>-->
+        </div>
+        <div class="pg-button">
+          <button class="ui primary button" v-on:click="doit">
+            <i class="send outline icon"></i>
+            Generate
+          </button>
         </div>
         <ul class="pg-output">
-          <li>珠帘高捲莫轻遮，</li>
-          <li>往往相逢隔岁华，</li>
-          <li>春气昨宵飘律管，</li>
-          <li>东风今日放梅花。</li>
+          <div class="sk-folding-cube" v-show="show">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+          </div>
         </ul>
       </div>
     </div>
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/jquery.lettering.js"></script>
+    <script src="/javascripts/jquery.textillate.js"></script>
+    <script src="/javascripts/semantic.min.js"></script>
+    <script src="/javascripts/vue.min.js"></script>
+    <script src="/javascripts/generate.js"></script>
   </body>
 </html>
