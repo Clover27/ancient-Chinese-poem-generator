@@ -154,7 +154,6 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 	sen_len = len(pattern)
 
 	pattern = pattern[len(pattern) - seq_len:]
-
 	if prime == "":
 		n_s = n_len - 1
 	else:
