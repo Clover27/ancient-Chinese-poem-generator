@@ -22,6 +22,9 @@ router.get('/generate', function(req, res, next) {
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
+      res.json({
+        result: []
+      })
       return;
     }
     console.log(`stdout:\n ${stdout}`);

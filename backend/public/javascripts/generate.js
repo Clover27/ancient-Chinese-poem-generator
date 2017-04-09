@@ -29,7 +29,6 @@ var app = new Vue({
       }
     },
     doit: function () {
-      // let a = this.checkPrime()
       let b = this.checkSentence()
       let me = this
       if (b) {
@@ -38,6 +37,10 @@ var app = new Vue({
         let url = '/generate?sentence=' + this.sentence.trim() + '&prime=' + this.prime.trim()
         $.getJSON(url, function (data) {
           me.show = false
+          if (!data || !data.result || data.result.length < 1) {
+            $('#root .pg-output').append('<li style="letter-spacing:1px;">Failed to generate poem.</li>')
+            return
+          }
           for (let i = 0; i < data.result.length; i++) {
             let len = data.result[i].length
             let end = i == data.result.length - 1 ? '。' : '，'
@@ -59,7 +62,7 @@ var app = new Vue({
         })
         .fail(function () {
           me.show = false
-          alert('Generation failed!')
+          $('#root .pg-output').append('<li style="letter-spacing:1px;">Failed to generate poem.</li>')
         })
       }
     }
@@ -78,12 +81,6 @@ var app = new Vue({
           variation: 'inverted',
           on: 'manual'
         })
-      // $('.tlt').textillate({ 
-      //   in: { 
-      //     effect: 'fadeIn',
-      //     delay: 300
-      //   } 
-      // })
     })
   }
 })
