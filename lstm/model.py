@@ -104,9 +104,9 @@ def first_sentence(first = ""):
 	'	first sentence 	
 	'''
 	if seq_len == 6:
-		return u"春氣滿林香"
+		return u"春气满林香"
 	else:
-		return u"春氣滿林香香香"
+		return u"苟利国家生死以"
 
 def predict(prediction):
 	'''
@@ -148,6 +148,12 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 			pattern.append(char_to_index[c])
 		else:
 			pattern.append(random.randint(0,n_vocab-1))
+	prime2 = ""
+	for c,x in enumerate(prime):
+		if x not in char_to_index:
+			prime2 += index_to_char[random.randint(0,n_vocab-1)]
+		else:
+			prime2 += x
 	# pattern = [char_to_index[c] for c in fs]
 	# generate characters
 	
@@ -163,7 +169,7 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 		s = ""
 		if prime != "":
 			s = s + prime[1 + i]
-			pattern.append(char_to_index[s[0]])
+			pattern.append(char_to_index[prime2[0]])
 			pattern = pattern[1:len(pattern)]
 		for j in range(len(s),sen_len -1,1):
 			x = numpy.reshape(pattern, (1, len(pattern), 1))
