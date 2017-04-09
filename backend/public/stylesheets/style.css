@@ -1,0 +1,58 @@
+#root {
+  background-color: #5E91D7;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  text-align: center;
+  padding-bottom: 5em;
+}
+
+#root .pg-header {
+  color: #fff;
+  padding: 3em 0;
+}
+
+#root .pg-input {
+  min-width: 290px;
+  width: 30%;
+  height: 2em;
+  border: none;
+  background-color: #5E91D7;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  text-align: center;
+  font-size: 2em;
+  transition: border-color 500ms ease-out;
+  border-radius: 0;
+  color: #fff;
+}
+
+#root .pg-input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+#root .pg-input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+#root .pg-input+i {
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#root .pg-output {
+  text-align: center;
+  margin: 5em auto 0 auto;
+  padding: 5em 0;
+  background-color: RGBA(57, 104, 171, 0.50);
+  width: 100%;
+}
+
+#root .pg-output li {
+  font-size: 2em;
+  line-height: 2.5em;
+  list-style: none;
+  letter-spacing: 3px;
+}
