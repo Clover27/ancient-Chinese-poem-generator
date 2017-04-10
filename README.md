@@ -1,4 +1,4 @@
-# Ancien-Chinese-Poetry-Generator
+# Ancien-Chinese-Poem-Generator
 This generator generates Chinese poem automatically when given the first sentence or the initial characters.
 Two LSTMs are stacked together and trained as a generative model.
 
@@ -10,17 +10,31 @@ Members:
 - Yizhao He
 - Zichen Yang
 
+# Requirements
+
+- numpy, scipy
+- yaml
+- HDF5 and h5py
+- TensorFlow
+- Keras
+
 # Usage
 
 ### Train
-```bash
-python ./lstm/train.py [-m save_path] [-d data_path]
+```sh
+python ./lstm/train.py [-m SAVE_PATH] [-d DATA_PATH]
 ```
 
 ### Generate
-```bash
-python ./lstm/generate.py [-p prime] [-s sentence] [-v vocabulary_path] [-w model_weights_path] [-m model_struct_path]
+```sh
+python ./lstm/generate.py [-p PRIME] [-s SENTENCE] [-v VOCAB_PATH] [-w MODEL_WEIGHTS_PATH] [-m MODEL_STRUCT_PATH]
 ```
+
+# Sample
+	**春至花海棠**
+	**别来此归依**
+	**风共旧知重**
+	**山巢寥须难**
 
 # Parameters
 The first version is a sequence to word language model based on LSTM programmed in Python with Keras.
@@ -28,7 +42,7 @@ The first version is a sequence to word language model based on LSTM programmed 
 - memory units number: 256 & 512
 - dropout: 0.2
 - batch size: 64
-- epoch: 20 - 100
+- epoch: 100+
 - sequence length: 6 or 8
 
 # Data Source
