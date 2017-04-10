@@ -1,4 +1,4 @@
-# Ancien-Chinese-Poem-Generator
+# Ancient-Chinese-Poem-Generator
 This generator generates Chinese poem automatically when given the first sentence or the initial characters.
 Two LSTMs are stacked together and trained as a generative model.
 
@@ -31,10 +31,11 @@ python ./lstm/generate.py [-p PRIME] [-s SENTENCE] [-v VOCAB_PATH] [-w MODEL_WEI
 ```
 
 # Sample
-	**春至花海棠**
-	**别来此归依**
-	**风共旧知重**
-	**山巢寥须难**
+
+	春至花海棠
+	别来此归依
+	风共旧知重
+	山巢寥须难
 
 # Parameters
 The first version is a sequence to word language model based on LSTM programmed in Python with Keras.
