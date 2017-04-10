@@ -48,3 +48,6 @@ The first version is a sequence to word language model based on LSTM programmed 
 
 # Data Source
 All poetry data comes from [JackyGao's work](https://github.com/jackeyGao/chinese-poetry), which is a great contribution for this model. Peotries are labed with special rhymes which are the rules Chinese poems need to follow. 
+
+# License
+MIT
