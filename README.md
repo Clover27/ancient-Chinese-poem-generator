@@ -40,6 +40,8 @@ python ./lstm/generate.py [-p PRIME] [-s SENTENCE] [-v VOCAB_PATH] [-w MODEL_WEI
 # Parameters
 The first version is a sequence to word language model based on LSTM programmed in Python with Keras.
 
+All poems used in training are 5-character simplified Chinese poems written in Tang dynasty. 
+- data size: 16,000+ poems
 - memory units number: 256 & 512
 - dropout: 0.2
 - batch size: 64
