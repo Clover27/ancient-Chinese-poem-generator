@@ -9,7 +9,7 @@ import json
 
 def main():
 	parser = argparse.ArgumentParser(description='Ancient Chinese poetry generator.')
-	parser.add_argument('-m','--model',type = str,help = "Model weights directory path to save.",default = "../model/weights")
+	parser.add_argument('-m','--model',type = str,help = "Model weights directory path to save.",default = "../model/weights-700-3-0.2")
 	# parser.add_argument('-p','--prime',type = str,help = "Initial Chinese characters for each sentence.",default = "")
 	# parser.add_argument('-s','--sentence',type = str,help = "First sentence for the poem.",default = "")
 	parser.add_argument('-d','--data',type = str,help = "Training data.",default = "../datasets/data_sample.txt")

@@ -81,8 +81,11 @@ def train(X,Y,file,load_path):
 	model = Sequential()
 	model.add(LSTM(n_mmu, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
 	model.add(Dropout(dropout))
-	model.add(LSTM(n_mmu))
+	model.add(LSTM(n_mmu, return_sequences=True))
 	model.add(Dropout(dropout))
+	if n_layer == 3:
+		model.add(LSTM(n_mmu))
+		model.add(Dropout(dropout))
 	model.add(Dense(Y.shape[1], activation='softmax'))
 	model.compile(loss='categorical_crossentropy', optimizer='adam')
 
