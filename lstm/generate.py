@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-sys.stderr = open('/dev/null', 'w')
+# sys.stderr = open('/dev/null', 'w')
 
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -17,7 +17,7 @@ def main():
 	parser = argparse.ArgumentParser(description='Ancient Chinese poetry generator.')
 	parser.add_argument('-p','--prime',type = str,help = "Initial Chinese characters for each sentence.",default = "")
 	parser.add_argument('-s','--sentence',type = str,help = "First sentence for the poem.",default = "")
-	parser.add_argument('-v','--voc',type = str,help = "Vocabulary file path.",default = "../model/weights/vocabulary.json")
+	parser.add_argument('-v','--voc',type = str,help = "Vocabulary file path.",default = "../model/weights/sample-vocabulary2.json")
 	parser.add_argument('-w','--weights',type = str,help = "Model weights to be loaded.",default = "../model/weights/weights-improvement-29-5.1411-1.hdf5")
 	parser.add_argument('-m','--model',type = str,help = "LSTM Model to be loaded.",default = "../model/weights/model.h5")
 
