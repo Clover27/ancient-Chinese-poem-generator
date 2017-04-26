@@ -25,14 +25,17 @@ def main():
 	#build vocabulary
 	voc_count = {}
 	voc = ['$']
+	pz = {}
 	print("Counting characters...")
 	for poem in raw_dict:
-		for c in poem['paragraphs']:
+		for i,c in enumerate(poem['paragraphs']):
 			if c not in voc:
 				voc_count[c] = 1
 				voc.append(c)
 			elif c != '$':
 				voc_count[c] += 1
+			if c not in pz and c != '$':
+				pz[c] = poem['strains'][i]
 
 	n_voc = len(voc)
 
@@ -40,7 +43,7 @@ def main():
 	# int_to_char = dict((i, c) for i, c in enumerate(voc))
 
 	out = open(args.model + '/vocabulary.json','w',encoding='utf8')
-	out.write(json.dumps([voc,voc_count],indent = 4,ensure_ascii=False))
+	out.write(json.dumps([voc,voc_count,pz],indent = 4,ensure_ascii=False))
 	out.close()
 
 	# getting training data
