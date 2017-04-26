@@ -35,7 +35,7 @@ def main():
 	# 	seq_len = len(args.sentence) + 1
 
 	voc_t = open(args.voc,'r',encoding = 'utf-8')
-	[voc,voc_count] = json.loads(voc_t.read())
+	[voc,voc_count,pz] = json.loads(voc_t.read())
 	voc_t.close()
 
 	char_to_int = dict((c, i) for i, c in enumerate(voc))
@@ -47,7 +47,7 @@ def main():
 	else:
 		fs = args.sentence
 
-	p = generate(args.weights,args.model,char_to_int,int_to_char,args.prime,args.sentence)
+	p = generate(args.weights,args.model,char_to_int,int_to_char,pz,args.prime,args.sentence)
 
 	for s in p:
 		print("\t" + s)

@@ -111,14 +111,37 @@ def first_sentence(first = ""):
 	else:
 		return u"苟利国家生死以"
 
-def predict(prediction):
+def predict(prediction,pz,tonedic,index_to_char,pre):
 	'''
 	' prediction: output from model, vector of size 'n_vocab'
 	' return the chosen character
 	'''
-	return numpy.argmax(prediction)
+	[prediction] = prediction
+	
+	s = sorted(range(len(prediction)),key = lambda k:prediction[k],reverse = True)
 
-def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,sentence = ""):
+	for i in s:
+		c = index_to_char[i]
+		if pre != i and c in tonedic and tonedic[c] == pz:
+			return i
+
+def gettone(p):
+	'''
+	' p: first sequence pattern
+	' return the whole pattern
+	'''
+	if p == 'ppzzp':
+		return ['ppzzp','zzzpp','zzppz','ppzzp']
+	if p == 'pppzz':
+		return ['pppzz','zzzpp','zzppz','ppzzp']
+	if p == 'zzzpp':
+		return ['zzzpp','ppzzp','pppzz','zzzpp']
+	if p == 'zzppz':
+		return ['zzppz','ppzzp','pppzz','zzzpp']
+	return ['']
+
+
+def generate(filename, model_path,char_to_index,index_to_char,tonedic,prime = "" ,sentence = ""):
 	# load the network weights
 	# filename = "weights-improvement-47-1.2219-bigger.hdf5"
 	model = load_model(model_path)
@@ -160,6 +183,17 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 	# pattern = [char_to_index[c] for c in fs]
 	# generate characters
 	
+	# get tone pattern
+	tone = ""
+	tonepattern = []
+	if sentence != "":
+		for c in sentence:
+			if c != '$':
+				tone += tonedic[c]
+		tonepattern = gettone(tone)
+
+
+	pre = 0
 	sen_len = len(pattern)
 
 	pattern = pattern[len(pattern) - seq_len:]
@@ -172,13 +206,15 @@ def generate(filename, model_path,char_to_index,index_to_char,prime = "" ,senten
 		s = ""
 		if prime != "":
 			s = s + prime[1 + i]
+			pre = char_to_index[prime2[0]]
 			pattern.append(char_to_index[prime2[0]])
 			pattern = pattern[1:len(pattern)]
 		for j in range(len(s),sen_len -1,1):
 			x = numpy.reshape(pattern, (1, len(pattern), 1))
 			x = x / float(n_vocab)
 			prediction = model.predict(x, verbose=0)
-			index = predict(prediction)
+			index = predict(prediction,tonepattern[i+1][j],tonedic,index_to_char,pre)
+			pre = index
 			result = index_to_char[index]
 			s = s+result
 			pattern.append(index)
