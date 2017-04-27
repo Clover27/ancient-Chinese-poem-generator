@@ -14,6 +14,7 @@ def main():
 	# parser.add_argument('-s','--sentence',type = str,help = "First sentence for the poem.",default = "")
 	parser.add_argument('-d','--data',type = str,help = "Training data.",default = "../datasets/data_sample.txt")
 	parser.add_argument('-l','--load',type = str,help = "Weights to load into model.",default = "")
+	parser.add_argument('-v','--vocabulary',action = 'store_true',help = "Only generate vocabulary for corresponding data.",default = False)
 
 
 	args = parser.parse_args()
@@ -46,6 +47,8 @@ def main():
 	out.write(json.dumps([voc,voc_count,pz],indent = 4,ensure_ascii=False))
 	out.close()
 
+	if args.vocabulary:
+		return
 	# getting training data
 	print("Getting training data...")
 	data_x , data_y = get_training_data(raw_dict,char_to_int)

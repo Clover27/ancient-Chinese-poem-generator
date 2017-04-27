@@ -116,6 +116,8 @@ def predict(prediction,pz,tonedic,index_to_char,pre):
 	' prediction: output from model, vector of size 'n_vocab'
 	' return the chosen character
 	'''
+	if pz == '' or pz == '-':
+		return numpy.argmax(prediction)
 	[prediction] = prediction
 	
 	s = sorted(range(len(prediction)),key = lambda k:prediction[k],reverse = True)
@@ -130,15 +132,15 @@ def gettone(p):
 	' p: first sequence pattern
 	' return the whole pattern
 	'''
-	if p == 'ppzzp':
-		return ['ppzzp','zzzpp','zzppz','ppzzp']
-	if p == 'pppzz':
-		return ['pppzz','zzzpp','zzppz','ppzzp']
-	if p == 'zzzpp':
-		return ['zzzpp','ppzzp','pppzz','zzzpp']
-	if p == 'zzppz':
-		return ['zzppz','ppzzp','pppzz','zzzpp']
-	return ['']
+	if p == 'ppzzp' or p == 'pppzp':
+		return ['ppzzp','-zzpp','-zppz','pp-zp']
+	if p == 'pppzz' or p == 'zppzz':
+		return ['pppzz','-zzpp','-zppz','pp-zp']
+	if p == 'zzzpp' or p == 'pzzpp':
+		return ['zzzpp','pp-zp','-ppzz','-zzpp']
+	if p == 'zzppz' or p == 'pzppz':
+		return ['zzppz','pp-zp','-ppzz','-zzpp']
+	return None
 
 
 def generate(filename, model_path,char_to_index,index_to_char,tonedic,prime = "" ,sentence = ""):
@@ -213,7 +215,10 @@ def generate(filename, model_path,char_to_index,index_to_char,tonedic,prime = ""
 			x = numpy.reshape(pattern, (1, len(pattern), 1))
 			x = x / float(n_vocab)
 			prediction = model.predict(x, verbose=0)
-			index = predict(prediction,tonepattern[i+1][j],tonedic,index_to_char,pre)
+			pz = ''
+			if tonepattern is not None:
+				pz = tonepattern[i+1][j]
+			index = predict(prediction,pz,tonedic,index_to_char,pre)
 			pre = index
 			result = index_to_char[index]
 			s = s+result
