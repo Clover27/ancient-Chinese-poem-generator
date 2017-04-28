@@ -12,6 +12,7 @@ Members:
 
 # Requirements
 
+- python 3
 - numpy, scipy
 - yaml
 - HDF5 and h5py
@@ -50,7 +51,7 @@ All poems used in training are 5-character simplified Chinese poems written in T
 - number of LSTM layers: 2 to 3
 
 # Data Source
-All poetry data comes from [JackyGao's work](https://github.com/jackeyGao/chinese-poetry), which is a great contribution for this model. Peotries are labed with tone pattern which are the rules Chinese poems need to follow. 
+All poetry data comes from [JackyGao's work](https://github.com/jackeyGao/chinese-poetry), which is a great contribution for this model. Peotries are labed with tone patterns which are the rules Chinese poems need to follow. 
 
 # License
 MIT
