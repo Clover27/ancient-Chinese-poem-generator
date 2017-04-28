@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 const exec = require('child_process').exec
 const path = require('path')
-const generate = path.resolve('../lstm/generate.py')
-const vocabulary = path.resolve('../model/weights/sample-vocabulary2.json')
-const weights = path.resolve('../model/weights/sample2-weights-512-0.2-3.4132.hdf5')
-const model = path.resolve('../model/weights/model-512-0.2.h5')
 
+const generate = path.resolve('../lstm/generate.py')
+const vocabulary = path.resolve('../model/weights-500-3-0.2/vocabulary.json')
+const weights = path.resolve('../model/weights-500-3-0.2/weights-improvement-174-2.9403.hdf5')
+const model = path.resolve('../model/weights-500-3-0.2/model-500-3-0.2.h5')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
