@@ -1,6 +1,6 @@
 # Ancient-Chinese-Poem-Generator
-This generator generates Chinese poem automatically when given the first sentence or the initial characters.
-Two LSTMs are stacked together and trained as a generative model.
+This generator generates Chinese poem automatically when given the first sentence or the initial characters. Basically, it's a rule based sequence to character model.
+2 or 3 LSTMs are stacked together and trained as a generative model. To make poem more human-written alike, tone pattern rule is also added.
 
 This is a group project for CSCI 544, Applied Natural Language Processing.
 
@@ -22,7 +22,7 @@ Members:
 
 ### Train
 ```sh
-python ./lstm/train.py [-m SAVE_PATH] [-d DATA_PATH]
+python ./lstm/train.py [-m SAVE_PATH] [-d DATA_PATH] [-v]
 ```
 
 ### Generate
@@ -42,14 +42,15 @@ The first version is a sequence to word language model based on LSTM programmed 
 
 All poems used in training are 5-character simplified Chinese poems written in Tang dynasty. 
 - data size: 16,000+ poems
-- memory units number: 256 & 512
+- memory units number: 256 to 700
 - dropout: 0.2
-- batch size: 64
+- batch size: 64 to 256
 - epoch: 100+
 - sequence length: 6 or 8
+- number of LSTM layers: 2 to 3
 
 # Data Source
-All poetry data comes from [JackyGao's work](https://github.com/jackeyGao/chinese-poetry), which is a great contribution for this model. Peotries are labed with special rhymes which are the rules Chinese poems need to follow. 
+All poetry data comes from [JackyGao's work](https://github.com/jackeyGao/chinese-poetry), which is a great contribution for this model. Peotries are labed with tone pattern which are the rules Chinese poems need to follow. 
 
 # License
 MIT
