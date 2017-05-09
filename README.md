@@ -41,10 +41,10 @@ python ./lstm/generate.py [-p PRIME] [-s SENTENCE] [-v VOCAB_PATH] [-w MODEL_WEI
 
 # Sample
 
-	春至花海棠
-	别来此归依
-	风共旧知重
-	山巢寥须难
+	春至花海棠，
+	衰家夜有人，
+	一去见家悲，
+	今气又去禅。
 
 # Parameters
 The first version is a sequence to word language model based on LSTM programmed in Python with Keras.
