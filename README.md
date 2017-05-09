@@ -14,7 +14,7 @@ Members:
 
 We provide a User Interface to demo our Poem Generator: [http://poem.knotesapp.com/](http://poem.knotesapp.com/)
 
-For fast testing, type in the first sentence: `春气满林香` , leave intial characters empty and press `Generate` button
+For fast testing, type in the first sentence: `春至花海棠` , leave intial characters empty and press `Generate` button
 
 ![UI](./docs/demo.png)
 
